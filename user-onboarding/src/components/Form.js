@@ -69,14 +69,20 @@ function Form(props) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		// users.push(formData)
-		// setUsers(users)
+		// debugger
+
 		axios.post('https://reqres.in/api/users', formData)
 		.then(res => {
 			console.log('RES.DATA', res.data)
+			
+			if (users === undefined){
+				setUsers(res.data)
+			} else{
+				const newArr = [...users, res.data]
+				setUsers(newArr)
+			}
 			clearFormData()
-			}	
-			)
+		})
 		.catch (err=>console.log('ERROR', err))
 		
 	}
@@ -100,7 +106,7 @@ function Form(props) {
 		formSchema.isValid(formData).then((valid) => setDisabledButton(!valid))
 		console.log('FORM DATA', formData)
 		console.log('ERRORS', errors)
-		console.log('UPDATED USERS',  users)
+		console.log('USERS',  users)
 	},[formData, errors, formSchema, users])
 		
 
@@ -195,7 +201,7 @@ function Form(props) {
 				</StyledForm>
 				
 				<SavedUsers>
-				{users >0 && users.map(el=> <UserCard name={el.name} email={el.email} pass={el.pass} createdAt={el.createdAt}/>)}
+				{users !== undefined && users.map(el=> <UserCard name={el.name} email={el.email} pass={el.pass} id={el.id} createdAt={el.createdAt}/>)}
 				</SavedUsers>
 
 			</Container>
@@ -203,3 +209,13 @@ function Form(props) {
 }
 
 export default Form
+
+// Sample response
+// {
+//     "name": "Diego Fischer",
+//     "email": "diego@carupi.com",
+//     "pass": "asdfasdf",
+//     "terms": true,
+//     "id": "912",
+//     "createdAt": "2021-09-09T04:07:15.024Z"
+// }

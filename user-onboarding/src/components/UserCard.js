@@ -15,8 +15,9 @@ export default function UserCard(props){
 	return(
 	<UserCardDiv>
 		<p>Name: {props.name}</p>
-		<p>Email: {props.name}</p>
-		<p>Passowrd: {props.name}</p>
+		<p>Email: {props.email}</p>
+		<p>Passowrd: {props.pass}</p>
+		<p>ID: {props.id}</p>
 		<p>Created At: {props.createdAt}</p>
 	</UserCardDiv>
 	)

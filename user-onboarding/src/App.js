@@ -9,8 +9,8 @@ function App() {
 	const [users, setUsers]= useState([])
   return (
     <React.Fragment>
-			<Form/>
-			<SavedUsers users={users} setUsers={setUsers}/>
+			<Form users={users} setUsers={setUsers}/>
+			<SavedUsers/>
 		</React.Fragment>
   );
 }
