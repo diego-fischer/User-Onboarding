@@ -47,7 +47,11 @@ describe('Form Tests', () => {
     nameInput().should('have.value', '')
     emailInput().should('have.value', '')
     passInput().should('have.value', '')
-    // termsInput().should('be.unchecked')
-    termsInput().should('have.value', false)
+
+    //@Brian: the task is "Check for form validation if an input is left empty"
+    //I've tried the steps below but they work
+
+    //termsInput().should('be.unchecked')
+    // termsInput().should('have.value', false)
   })
 })
